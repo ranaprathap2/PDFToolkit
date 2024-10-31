@@ -1,55 +1,69 @@
-import { FileText, Merge, Scissors, Lock, Upload, Download } from 'lucide-react';
 import { FeatureCard } from './FeatureCard';
+import { Edit, FilePlus, Image, Lock, Unlock, Compass, Merge, Split, RotateCw, Trash2, Key, Shield, EyeOff } from 'lucide-react'; // Example icons
 
 const features = [
   {
-    icon: FileText,
-    title: 'PDF Editing',
-    description: 'Edit text, images, and layouts. Merge, split, rotate, and rearrange pages with ease.'
+    category: 'PDF Operations',
+    items: [
+      { icon: Edit, title: 'PDF Editing', description: 'Edit text, images, and layouts. Merge, split, rotate, and rearrange pages.' },
+      { icon: FilePlus, title: 'PDF Creation', description: 'Create PDFs from scratch or convert other file formats. Add branding, signatures, and more.' },
+      { icon: Image, title: 'Asset Extraction', description: 'Extract images, text, and other content from PDFs for reuse in other projects.' },
+    ],
   },
   {
-    icon: Upload,
-    title: 'PDF Creation',
-    description: 'Create PDFs from scratch or convert other file formats. Add branding and signatures.'
+    category: 'PDF Enhancement',
+    items: [
+      { icon: Compass, title: 'Compress', description: 'Reduce file size without losing quality.' },
+      { icon: Lock, title: 'Protect', description: 'Add passwords and permissions to secure your PDFs.' },
+      { icon: Unlock, title: 'Unlock', description: 'Remove restrictions to enable full access.' },
+      { icon: RotateCw, title: 'Resize', description: 'Adjust page dimensions for optimal viewing.' },
+    ],
   },
   {
-    icon: Download,
-    title: 'Asset Extraction',
-    description: 'Extract images, text, and other content from PDFs for reuse in other projects.'
+    category: 'PDF Merging and Splitting',
+    items: [
+      { icon: Merge, title: 'Merge', description: 'Combine multiple PDF files into a single document.' },
+      { icon: Split, title: 'Extract', description: 'Split a PDF into individual pages or sections.' },
+      { icon: RotateCw, title: 'Rearrange', description: 'Reorder, rotate, and delete pages within a PDF.' },
+    ],
   },
   {
-    icon: Merge,
-    title: 'PDF Merging',
-    description: 'Combine multiple PDF files into a single document effortlessly.'
+    category: 'PDF Page Management',
+    items: [
+      { icon: RotateCw, title: 'Sort Pages', description: 'Rearrange PDF pages in any order, then save the updated document.' },
+      { icon: Trash2, title: 'Delete Pages', description: 'Remove unwanted pages from a PDF to create a streamlined file.' },
+      { icon: RotateCw, title: 'Rotate Pages', description: 'Correct the orientation of PDF pages with a simple click.' },
+    ],
   },
   {
-    icon: Scissors,
-    title: 'PDF Splitting',
-    description: 'Split PDFs into individual pages or custom sections with precision.'
+    category: 'PDF Security and Protection',
+    items: [
+      { icon: Key, title: 'Add Passwords', description: 'Restrict access to authorized users.' },
+      { icon: Shield, title: 'Set Permissions', description: 'Control what actions users can perform on the PDF.' },
+      { icon: Lock, title: 'Encrypt Content', description: 'Ensure sensitive information remains confidential.' },
+      { icon: EyeOff, title: 'Redact Critical Data', description: 'Remove or obscure sensitive details before sharing.' },
+    ],
   },
-  {
-    icon: Lock,
-    title: 'PDF Security',
-    description: 'Protect your PDFs with passwords, encryption, and permission controls.'
-  }
 ];
 
 export function Features() {
   return (
-    <section className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold mb-4">Powerful PDF Tools</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Everything you need to work with PDFs in one convenient platform
-          </p>
+    <div>
+      {features.map((section) => (
+        <div key={section.category} style={{ margin: '20px 0' }}>
+          <h2 className="text-2xl font-bold mb-4">{section.category}</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {section.items.map((feature) => (
+              <FeatureCard
+                key={feature.title}
+                icon={feature.icon}
+                title={feature.title}
+                description={feature.description}
+              />
+            ))}
+          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature) => (
-            <FeatureCard key={feature.title} {...feature} />
-          ))}
-        </div>
-      </div>
-    </section>
+      ))}
+    </div>
   );
-}
+} 
