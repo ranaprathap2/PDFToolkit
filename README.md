@@ -1,4 +1,4 @@
-# Project Name
+# PDF Toolkit
 
 A brief description of your project.
 
@@ -102,3 +102,5 @@ If you wish to contribute to this project, please follow these steps:
 4. Commit your changes (`git commit -m 'Add some feature'`).
 5. Push to the branch (`git push origin feature/YourFeature`).
 6. Open a pull request.
+
+Registered to EPIC Studios.
